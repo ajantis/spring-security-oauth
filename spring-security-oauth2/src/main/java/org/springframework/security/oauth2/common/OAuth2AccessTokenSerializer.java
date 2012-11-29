@@ -17,11 +17,10 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.JsonGenerator;
-import org.codehaus.jackson.map.JsonSerializer;
-import org.codehaus.jackson.map.SerializerProvider;
-import org.codehaus.jackson.map.ser.SerializerBase;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
 import org.springframework.util.Assert;
 
 /**
@@ -32,15 +31,15 @@ import org.springframework.util.Assert;
  * @see OAuth2AccessTokenDeserializer
  */
 @SuppressWarnings("deprecation")
-public final class OAuth2AccessTokenSerializer extends SerializerBase<OAuth2AccessToken> {
+public final class OAuth2AccessTokenSerializer extends JsonSerializer<OAuth2AccessToken> {
 
 	public OAuth2AccessTokenSerializer() {
-		super(OAuth2AccessToken.class);
+		super();
 	}
 
 	@Override
 	public void serialize(OAuth2AccessToken token, JsonGenerator jgen, SerializerProvider provider) throws IOException,
-			JsonGenerationException {
+            JsonGenerationException {
 		jgen.writeStartObject();
 		jgen.writeStringField(OAuth2AccessToken.ACCESS_TOKEN, token.getValue());
 		jgen.writeStringField(OAuth2AccessToken.TOKEN_TYPE, token.getTokenType());

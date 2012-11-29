@@ -1,11 +1,11 @@
 package org.springframework.security.oauth2.common.exceptions;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 /**
  * Base exception for OAuth 2 exceptions.
